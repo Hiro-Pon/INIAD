@@ -9,13 +9,16 @@
 import UIKit
 import Alamofire
 import Foundation
+import SwiftyJSON
+
+
 
 class ViewController: UIViewController {
     @IBOutlet var illuminanceLabel:UILabel!
     @IBOutlet var humidityLabel:UILabel!
     @IBOutlet var airpressureLabel:UILabel!
     @IBOutlet var tempertureLabel:UILabel!
-    
+    @IBOutlet var textField:UITextField!
     
     let BASE_URL = "https://edu-iot.iniad.org/api/v1"
     override func viewDidLoad() {
@@ -28,32 +31,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     // API取得の開始処理
-    func getroomData() {
-        let room_URL = "/sensors/3102"
+    func getroomData(room_num:String) {
+        let room_URL = "/sensors/" + room_num
         Alamofire.request(BASE_URL + room_URL)
             .authenticate(user: "s1F101702497", password: "Aa1392691087")
             .responseJSON {response in
-                print("Request: \(String(describing: response.request))")
-                print("Response: \(String(describing: response.response))")
                 print("Result: \(String(describing: response.result))")
-                
-                if let json:NSArray = response.result.value as? NSArray{
+
+                if let json:JSON = JSON(response.result.value!){
                     print("JSON: \(json)")  // serialized json response
                     
-                    let illuminance = json[0] as? NSDictionary
-                    let humidity = json[1] as? NSDictionary
-                    let airpressure = json[2] as? NSDictionary
-                    let temperature = json[3] as? NSDictionary
-                    
-                    let illuminance_value = illuminance!["value"] as? String
-                    let humidity_value = humidity!["value"] as? String
-                    let airpressure_value = airpressure!["value"] as? String
-                    let temperature_value = temperature!["room_num"]
-                    
+                    let illuminance_value = json[0]["value"].description
+                    let humidity_value = json[1]["value"].description
+                    let airpressure_value = json[2]["value"].description
+                    let temperature_value = json[3]["value"].description
+                    print(type(of: illuminance_value))
+
+                    print(illuminance_value,humidity_value,airpressure_value,temperature_value)
                     self.illuminanceLabel.text = illuminance_value
                     self.humidityLabel.text = humidity_value
                     self.airpressureLabel.text = airpressure_value
-                    self.tempertureLabel.text = temperature_value as! String
+                    self.tempertureLabel.text = temperature_value
                     //let first = json[0]
                     //self.PrintLabel.text = String(first)
                     //print(type(of: json[0]))
@@ -63,18 +61,40 @@ class ViewController: UIViewController {
         }
         
     }
-    func openlocker(){
-        let locker_URL = "/locker/open"
-        Alamofire.request(BASE_URL + locker_URL)
+    
+    func hanteiroom(room_num: String) -> Bool {
+        let room_URL = "/sensors/3102"
+        var han:Bool = false
+        Alamofire.request(BASE_URL + room_URL)
             .authenticate(user: "s1F101702497", password: "Aa1392691087")
             .responseJSON {response in
+                let chr_result = response.result.description
+                print(chr_result)
+                if  chr_result == "SUCCESS" {
+                    han = true
+                }
+                
                 
         }
+        return han
     }
+    
+
     
     
     @IBAction func getData(){
-        getroomData()
+//        var array:NSArray = []
+//        if hanteiroom(room_num: "3102"){
+//            array.adding(3)
+//        }
+//        print(hanteiroom(room_num: "3102"))
+//        print(array)
+//        for i in 3000..<4000 {
+//            getroomData(room_num: String(i))
+//
+//        }
+        let num = textField.text!
+        getroomData(room_num: num)
     }
     
 }

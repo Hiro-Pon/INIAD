@@ -7,6 +7,7 @@ target 'INIAD' do
 
   # Pods for INIAD
   pod 'Alamofire'
+  pod "SwiftyJSON", ">= 2.2"
 
   target 'INIADTests' do
     inherit! :search_paths
