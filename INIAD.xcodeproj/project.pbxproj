@@ -15,6 +15,7 @@
 		609B8D9B20B27B9400D1448B /* INIADTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609B8D9A20B27B9400D1448B /* INIADTests.swift */; };
 		609B8DA620B27B9400D1448B /* INIADUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609B8DA520B27B9400D1448B /* INIADUITests.swift */; };
 		609B8DB420B7C68500D1448B /* LockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609B8DB320B7C68500D1448B /* LockerViewController.swift */; };
+		609B8DC720BBC3CD00D1448B /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609B8DC620BBC3CD00D1448B /* ClassesViewController.swift */; };
 		84258863C5CA802AE99B7AD9 /* Pods_INIAD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98B1DBD55B0195AD551B29B /* Pods_INIAD.framework */; };
 		B3A77EB2150303180670838A /* Pods_INIADTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 082B848F3B6256B3D0AF42B2 /* Pods_INIADTests.framework */; };
 		BEDF7E8F021317C847EC315F /* Pods_INIADUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D975423039323EC60672B /* Pods_INIADUITests.framework */; };
@@ -58,6 +59,7 @@
 		609B8DA520B27B9400D1448B /* INIADUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INIADUITests.swift; sourceTree = "<group>"; };
 		609B8DA720B27B9400D1448B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		609B8DB320B7C68500D1448B /* LockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerViewController.swift; sourceTree = "<group>"; };
+		609B8DC620BBC3CD00D1448B /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
 		C8E221FD67260BDF7C07E3AB /* Pods-INIADUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INIADUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-INIADUITests/Pods-INIADUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97D975423039323EC60672B /* Pods_INIADUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INIADUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F98B1DBD55B0195AD551B29B /* Pods_INIAD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INIAD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 				609B8D8520B27B9200D1448B /* AppDelegate.swift */,
 				609B8D8720B27B9200D1448B /* ViewController.swift */,
 				609B8DB320B7C68500D1448B /* LockerViewController.swift */,
+				609B8DC620BBC3CD00D1448B /* ClassesViewController.swift */,
 				609B8D8920B27B9200D1448B /* Main.storyboard */,
 				609B8D8C20B27B9400D1448B /* Assets.xcassets */,
 				609B8D8E20B27B9400D1448B /* LaunchScreen.storyboard */,
@@ -383,6 +386,7 @@
 				609B8DB420B7C68500D1448B /* LockerViewController.swift in Sources */,
 				609B8D8820B27B9200D1448B /* ViewController.swift in Sources */,
 				609B8D8620B27B9200D1448B /* AppDelegate.swift in Sources */,
+				609B8DC720BBC3CD00D1448B /* ClassesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,8 +561,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7G4R772ZVB;
+				DEVELOPMENT_TEAM = G38P4Z3EJZ;
 				INFOPLIST_FILE = INIAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,8 +581,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7G4R772ZVB;
+				DEVELOPMENT_TEAM = G38P4Z3EJZ;
 				INFOPLIST_FILE = INIAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
