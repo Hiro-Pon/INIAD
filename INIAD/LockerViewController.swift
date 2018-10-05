@@ -11,10 +11,11 @@ import Alamofire
 import SwiftyJSON
 
 class LockerViewController: UIViewController {
+    @IBOutlet var GetButton:UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        GetButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
 

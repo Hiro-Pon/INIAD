@@ -22,6 +22,8 @@ class ViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDeleg
     @IBOutlet var airpressureLabel:UILabel!
     @IBOutlet var tempertureLabel:UILabel!
     @IBOutlet var roomPic: UIPickerView!
+    @IBOutlet var GetButton:UIButton!
+    
     
     let floor_nums = ["Floor3","Floor4"]
     let three_Room_nums = ["3101","3102","3105","3106","3109","3110","3114"
@@ -38,7 +40,8 @@ class ViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        RoomLabel.text = selected_room
+        RoomLabel.text = "Room Number:" + selected_room
+        GetButton.layer.cornerRadius = 10
         roomPic.delegate = self
         roomPic.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
@@ -50,9 +53,10 @@ class ViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDeleg
     }
     // API取得の開始処理
     func getroomData(room_num:String) {
+        RoomLabel.text = "Room Number:" + selected_room
         let room_URL = "/sensors/" + room_num
         Alamofire.request(BASE_URL + room_URL)
-            .authenticate(user: "s1F101702497", password: "Aa1392691087")
+            .authenticate(user: "s1F101702497", password: "")
             .responseJSON {response in
                 if response.result.value != nil{
                     if let json:JSON = JSON(response.result.value!){
@@ -72,7 +76,7 @@ class ViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDeleg
                             secondformatter.locale = Locale(identifier: "ja_JP")
                             print(secondformatter.string(from: Date()))
                             print(formatter.string(from: Date()))
-                            self.TimeLabel.text = formatter.string(from: Date())
+                            self.TimeLabel.text = "Time:" + formatter.string(from: Date())
                             self.TimeSecondLabel.text = secondformatter.string(from: Date())
                             
                             let illuminance_value = json[0]["value"].description
@@ -168,12 +172,12 @@ class ViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDeleg
             if selected_floor == 3 {
                 //                textField.text = three_Room_nums[row]
                 selected_room = three_Room_nums[row]
-                RoomLabel.text = selected_room
+                //RoomLabel.text = "Room Number:" + selected_room
                 room_row = row
             }else {
                 //                textField.text = four_Room_nums[row]
                 selected_room = four_Room_nums[row]
-                RoomLabel.text = selected_room
+                //RoomLabel.text = "Room Number:" + selected_room
                 room_row = row
             }
         }else{
@@ -186,13 +190,14 @@ class ViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDeleg
             if selected_floor == 3 {
                 //                textField.text = three_Room_nums[row]
                 selected_room = three_Room_nums[room_row]
-                RoomLabel.text = selected_room
+                //RoomLabel.text = "Room Number:" + selected_room
             }else {
                 //                textField.text = four_Room_nums[row]
                 selected_room = four_Room_nums[room_row]
-                RoomLabel.text = selected_room
+                //RoomLabel.text = "Room Number:" + selected_room
             }
         }
+        print(selected_room)
     }
 }
 
